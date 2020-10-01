@@ -8,19 +8,38 @@ import itertools
 
 
 def get_even_keys(dictionary):
-	return {}
+	return {i for i in dictionary.keys() if i % 2 == 0}
+
 
 def join_dictionaries(dictionaries):
-	return {}
+	result = {}
+	for d in dictionaries:
+		result.update(d)
+	return result
+
 
 def dictionary_from_lists(keys, values):
-	return {}
+	return {keys[i]: values[i] for i in range(min(len(keys), len(values)))}
+
+
+# return dict(zip(keys, values))
+
 
 def get_greatest_values(dictionnary, num_values):
-	return []
+	# Extraire les valeurs
+	# Ordonner les valeurs
+	# Choisir les num_values plus grands
+
+	return sorted(dictionnary.values(), reverse=True)[0:num_values]
+
 
 def get_sum_values_from_key(dictionnaries, key):
-	return 0
+	#result = 0
+	#for d in dictionnaries:
+		#if key in d:
+			#result += d[key]
+
+	return sum([d[key] for d in dictionnaries if key in d])
 
 
 if __name__ == "__main__":
@@ -44,7 +63,7 @@ if __name__ == "__main__":
 	}
 	print(join_dictionaries([yeet, doot]))
 	print()
-	
+
 	doh = [
 		"D'OH!",
 		"d'oh",
@@ -58,7 +77,7 @@ if __name__ == "__main__":
 	]
 	print(dictionary_from_lists(doh, nice))
 	print()
-	
+
 	nums = {
 		"nice": 69,
 		"nice bro": 69420,
